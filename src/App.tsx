@@ -1,24 +1,27 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Header } from "./components/header/Header";
+import { Routes, Route } from "react-router-dom";
+import { LocalWeather } from "./features/weather/localWeather/LocalWeather";
+import { Weather } from "./components/weather/Weather";
+import { SelectedWeather } from "./features/weather/selectedWeather/SelectedWeather";
+import { WeatherNow } from "./components/weatherNow/WeatherNow";
+import { WeatherFullDay } from "./components/weatherRest/WeatherRest";
+import { useAppSelector } from "./hooks/redux";
 
 function App() {
+  const day = useAppSelector(state => state.weather.entities.day)
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <Routes>
+        <Route path="/" element={<Weather />}>
+          <Route index element={<LocalWeather />} />
+          <Route path='/:name' element={<SelectedWeather />} >
+            <Route path='now' element={<WeatherNow />} />
+            <Route path='today' element={<WeatherFullDay day={day} />} />
+            <Route path='tomorrow' element={<WeatherFullDay day={day} />} />
+          </Route>
+        </Route>
+      </Routes>
     </div>
   );
 }

@@ -1,0 +1,29 @@
+.forecast {
+  padding-bottom: 10px;
+  position: relative;
+  width: 60%;
+  display: flex;
+  gap: 5px;
+  min-height: 160px;
+  justify-content: space-between;
+  overflow-y: hidden;
+  overflow-x: auto;
+  &::-webkit-scrollbar {
+    height: 6px;
+  }
+  &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px 5px rgba(0, 0, 0, 0.3);
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.9);
+  }
+  @media (max-width: 575.98px) {
+    width: 100%;
+  }
+  .windSpeed {
+    position: absolute;
+    bottom: 30px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}

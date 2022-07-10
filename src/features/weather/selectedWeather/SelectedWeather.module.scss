@@ -1,0 +1,17 @@
+.container {
+  .title {
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+  .weather {
+    .weather__tabs {
+      display: flex;
+      justify-content: space-around;
+    }
+    .weather__content {
+    }
+  }
+}
+.active {
+  color: aqua;
+}

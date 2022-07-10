@@ -1,0 +1,23 @@
+.container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 5px 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  &:hover {
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+  }
+  .icon {
+    font-size: 18px;
+  }
+  .temp {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 15px;
+  }
+}

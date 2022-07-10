@@ -1,0 +1,38 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  min-height: 100%;
+  width: 80px;
+  min-width: 60px;
+  .time {
+    font-size: 18px;
+    height: 15%;
+  }
+  .clouds {
+    height: 50px;
+    width: 50px;
+    & > img {
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.6));
+    }
+  }
+  .temp {
+    padding: 5px;
+    height: 15%;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    @media (max-width: 575.98px) {
+      font-size: 14px;
+    }
+  }
+  .wind {
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    height: 35%;
+  }
+}
