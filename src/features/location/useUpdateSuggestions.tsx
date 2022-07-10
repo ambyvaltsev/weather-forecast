@@ -1,6 +1,6 @@
 import { useAppDispatch } from "../../hooks/redux";
 import { checkingInput } from "./location-slice";
-import { debounce } from "../../debounce/debounce";
+import { debounce } from "../../helpers/helpers";
 import { useEffect } from "react";
 
 export const useUpdateSuggestions = (location: string) => {

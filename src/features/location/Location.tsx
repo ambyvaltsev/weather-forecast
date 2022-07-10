@@ -11,7 +11,9 @@ import { useUpdateSuggestions } from "./useUpdateSuggestions";
 export const Location: FC = () => {
   const tooltip = useRef<HTMLDivElement>(null);
   const navigator = useNavigate();
-  const { suggestions, selectedLocation, favoritesLocations } = useAppSelector((state) => state.location.entities);
+  const { suggestions, selectedLocation, favoritesLocations } = useAppSelector(
+    (state) => state.location.entities
+  );
   const [location, setLocation] = useState<string>("");
   const [isActive, setIsActive] = useState<boolean>(false);
 

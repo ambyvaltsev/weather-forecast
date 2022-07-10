@@ -29,7 +29,6 @@ export const LocationInput: FC<ILocationInputProps> = ({ location, setIsActive, 
       onChange={(e) => setLocation(e.target.value)}
       onKeyDown={enterLocation}
       onFocus={() => setIsActive(true)}
-      /* onBlur={blur} */
     />
   );
 };

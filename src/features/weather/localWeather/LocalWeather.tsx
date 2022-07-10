@@ -9,10 +9,8 @@ export const LocalWeather: FC = () => {
   const dispatch = useAppDispatch();
   const weather = useAppSelector((state) => state.weather.entities.weather);
   const { coords, localLocation } = useAppSelector((state) => state.location.entities);
-  
-  useEffect(() => {
 
-  }, [])
+  useEffect(() => {}, []);
 
   useEffect(() => {
     if (coords.latitude && coords.longitude) {
@@ -25,7 +23,7 @@ export const LocalWeather: FC = () => {
       {localLocation && (
         <>
           <CurrentWeather localLocation={localLocation} weather={weather} />
-          <Forecast /> 
+          <Forecast />
         </>
       )}
     </div>

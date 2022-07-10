@@ -21,12 +21,7 @@ export const Forecast: FC = () => {
       {forecasts.map((forecast, index) => {
         let date = new Date(forecasts[index].date.split(" ").join("T"));
         if (date <= hour && index !== 0) {
-          return (
-            <ForecastColumn
-              key={forecast.date}
-              forecast={forecast}
-            />
-          );
+          return <ForecastColumn key={forecast.date} forecast={forecast} />;
         }
       })}
     </div>

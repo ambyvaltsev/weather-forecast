@@ -2,6 +2,7 @@ import s from "./ForecastColumn.module.scss";
 import { FC } from "react";
 import { setBGColor } from "../../helpers/helpers";
 import { IWeather } from "../../features/weather/weather-slice";
+
 interface IForecastColumnProps {
   forecast: IWeather;
   key: string;

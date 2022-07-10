@@ -1,7 +1,7 @@
 import { FC } from "react";
 import s from "./LocationTooltip.module.scss";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
-import { NameTooltip } from "../nameTooltip/NameTooltip";
+import { NameLocationTooltip } from "../nameLocationTooltip/NameLocationTooltip";
 import { getSelectedLocation } from "../../features/location/location-slice";
 
 interface ILocationTooltipProps {
@@ -25,14 +25,14 @@ export const LocationTooltip: FC<ILocationTooltipProps> = ({ suggestions, setIsA
     <div className={s.container}>
       {favoritesLocations.length > 0 && <h6>Favorites</h6>}
       {favoritesLocations.map((name) => (
-        <NameTooltip key={name} name={name} selectLocation={selectLocation} />
+        <NameLocationTooltip key={name} name={name} selectLocation={selectLocation} />
       ))}
 
       {!suggestions.every((s) => favoritesLocations.includes(s)) && <h6>Search</h6>}
       {suggestions.length !== 0 &&
         suggestions.map((name, index) => {
           if (index < 10 && !favoritesLocations.includes(name)) {
-            return <NameTooltip key={name} name={name} selectLocation={selectLocation} />;
+            return <NameLocationTooltip key={name} name={name} selectLocation={selectLocation} />;
           }
         })}
     </div>

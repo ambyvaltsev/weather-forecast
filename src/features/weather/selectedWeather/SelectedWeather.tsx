@@ -20,7 +20,9 @@ export const SelectedWeather: FC = () => {
 
   return (
     <div className={s.container}>
-      <h5 className={s.title}>{`Weather in ${selectedLocation}`}</h5>
+      <h5 className={s.title}>
+        {selectedLocation && `Weather in ${selectedLocation[0].toUpperCase()}${selectedLocation.slice(1)}`}
+      </h5>
       <div className={s.weather}>
         <div className={s.weather__tabs}>
           <Tab day="Now" />

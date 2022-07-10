@@ -21,7 +21,9 @@ export const WeatherNow: FC = () => {
       <div className={s.details}>
         <div className={s.detail}>
           <h6 className={s.detail__name}>Wind</h6>
-          <span className={s.detail__value}>{weather.windSpeed} m/s / {weather.windDir}</span>
+          <span className={s.detail__value}>
+            {weather.windSpeed} m/s / {weather.windDir}
+          </span>
         </div>
         <div className={s.detail}>
           <h6 className={s.detail__name}>Pressure</h6>

@@ -1,15 +1,15 @@
 import { FC, useState, useEffect } from "react";
-import s from "./NameTooltip.module.scss";
+import s from "./NameLocationTooltip.module.scss";
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
 import { addFavoriteLocation, removeFavoritesLocation } from "../../features/location/location-slice";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import { getFavoriteLocWeather } from "../../features/weather/weather-slice";
-
+import { setBGColor } from "../../helpers/helpers";
 interface INameTooltip {
-  selectLocation: (e: any) => void;
-  name: string;
+  selectLocation: (e: any) => void
+  name: string
 }
-export const NameTooltip: FC<INameTooltip> = ({ selectLocation, name }) => {
+export const NameLocationTooltip: FC<INameTooltip> = ({ selectLocation, name }) => {
   const [weather, setWeather] = useState<string>("");
   const dispatch = useAppDispatch();
   const { favoritesLocations } = useAppSelector((state) => state.location.entities);
@@ -33,7 +33,12 @@ export const NameTooltip: FC<INameTooltip> = ({ selectLocation, name }) => {
         {favoritesLocations.includes(name) ? <AiFillStar /> : <AiOutlineStar />}
       </span>
       <span>{name}</span>
-      {weather && <div className={s.temp}>{`${weather}\u2103`}</div>}
+      {weather && (
+        <div
+          className={s.temp}
+          style={{ backgroundColor: `${setBGColor(+weather)}` }}
+        >{`${weather}\u2103`}</div>
+      )}
     </div>
   );
 };

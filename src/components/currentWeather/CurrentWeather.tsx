@@ -1,5 +1,5 @@
 import s from "./CurrentWeather.module.scss";
-import { FC, useEffect } from "react";
+import { FC } from "react";
 import { IWeather } from "../../features/weather/weather-slice";
 import { setBGColor } from "../../helpers/helpers";
 interface ICurrentWeatherProps {
@@ -8,8 +8,6 @@ interface ICurrentWeatherProps {
 }
 
 export const CurrentWeather: FC<ICurrentWeatherProps> = ({ localLocation, weather }) => {
-  useEffect(() => {}, []);
-
   return (
     <div className={s.container}>
       <h1 className={s.location}>{localLocation}</h1>

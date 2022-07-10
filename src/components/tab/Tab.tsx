@@ -8,7 +8,7 @@ interface ITabProps {
   day: string;
 }
 
-export const Tab: FC<ITabProps> = ({ date, day}) => {
+export const Tab: FC<ITabProps> = ({ date, day }) => {
   const dispatch = useAppDispatch();
   const { weather } = useAppSelector((state) => state.weather.entities);
   const { temp } = weather;

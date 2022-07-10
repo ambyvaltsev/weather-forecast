@@ -1,5 +1,5 @@
 export const setBGColor = (temp: number) => {
-  const t1 = temp / 10 % 1 * 50
+  const t1 = ((temp / 10) % 1) * 50;
   let color = 0;
   if (temp) {
     if (temp > 0 && temp < 10) {
@@ -15,4 +15,40 @@ export const setBGColor = (temp: number) => {
     }
     return temp > 0 ? `rgba(255, ${color - t1}, 0, 0.3)` : `rgba(0, ${150 - temp * 3}, 255, 0.3)`;
   }
+};
+
+type Callback = (...args: string[]) => void;
+
+export const debounce = (fn: Callback, ms: number) => {
+  let timeout: NodeJS.Timeout;
+  return function (...args: string[]) {
+    function fnCall() {
+      fn.apply(this, [...args]);
+    }
+    clearTimeout(timeout);
+    timeout = setTimeout(fnCall, ms);
+  };
+};
+
+export const formatter = (day: string): string => {
+  const today = new Date()
+    .toLocaleString("en-GB", {
+      year: "numeric",
+      month: "numeric",
+      day: "numeric",
+    })
+    .split("/")
+    .reverse()
+    .join("-");
+  const tomorrow = new Date(new Date().setDate(new Date().getDate() + 1))
+    .toLocaleString("en-GB", {
+      year: "numeric",
+      month: "numeric",
+      day: "numeric",
+    })
+    .split("/")
+    .reverse()
+    .join("-");
+
+  return day === "Today" ? today : tomorrow;
 };
