@@ -8,7 +8,7 @@ export interface ICoords {
 }
 export const useGetCoords = () => {
   const dispatch = useAppDispatch();
-  const [coords, setCoords] = useState<ICoords>({ latitude: null, longitude: null });
+  const [coords, setCoords] = useState<ICoords>({ latitude: 55.7522, longitude: 37.6156 });
   useEffect(() => {
     if ("geolocation" in navigator) {
       navigator.geolocation.getCurrentPosition((pos) => {
@@ -16,9 +16,6 @@ export const useGetCoords = () => {
           setCoords({ latitude: pos.coords.latitude, longitude: pos.coords.longitude });
         }
       });
-    } else {
-      // Москва в качесвте дефолтных координат
-      setCoords({ latitude: 55.7522, longitude: 37.6156 });
     }
   }, []);
 
