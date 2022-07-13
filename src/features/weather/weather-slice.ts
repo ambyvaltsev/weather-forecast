@@ -54,7 +54,7 @@ const formatWeather = (data: ReceivedWeather, direction: string, index: number =
     clouds: `${data.weather[0].description[0].toUpperCase() + data.weather[0].description.slice(1)}`,
     rain: data.rain?.["1h"] ?? 0,
     snow: data.snow?.["1h"] ?? 0,
-    icon: data.weather[0].icon, 
+    icon: `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`, 
   };
 };
 export const getWeather = createAsyncThunk<{ weather: IWeather; forecasts: IWeather[] }, string>(

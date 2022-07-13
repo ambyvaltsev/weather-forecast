@@ -1,4 +1,5 @@
 .container {
+  height: 36px;
   position: relative;
   display: flex;
   align-items: center;
@@ -15,11 +16,22 @@
     font-size: 18px;
   }
   .temp {
-    font-size: 18px;
+    font-size: 16px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 65px;
+    padding: 5px;
+  }
+  .clouds {
+    height: 36px;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
     right: 15px;
-    padding: 5px;
+    & > img {
+      height: 100%;
+      filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.7));
+    }
   }
 }

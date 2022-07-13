@@ -13,7 +13,7 @@ export const setBGColor = (temp: number) => {
     } else if (temp >= 40) {
       color = 50;
     }
-    return temp > 0 ? `rgba(255, ${color - t1}, 0, 0.3)` : `rgba(0, ${150 - temp * 3}, 255, 0.3)`;
+    return temp > 0 ? `rgba(255, ${color - t1}, 0, 0.3)` : `rgba(0, ${color - t1 - 100}, 255, 0.3)`;
   }
 };
 

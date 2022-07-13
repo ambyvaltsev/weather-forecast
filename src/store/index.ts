@@ -13,7 +13,7 @@ export const store = configureStore({
   preloadedState,
 });
 
-store.subscribe(() => saveState(store.getState()));
+store.subscribe(() => saveState(store.getState().location.entities));
 
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

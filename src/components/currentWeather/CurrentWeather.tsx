@@ -26,7 +26,7 @@ export const CurrentWeather: FC<ICurrentWeatherProps> = ({ localLocation, weathe
         >{`${weather.temp}\u2103`}</span>
         <div className={s.clouds}>
           <img
-            src={weather.icon && `http://openweathermap.org/img/wn/${weather.icon}@2x.png`}
+            src={weather.icon && weather.icon}
             alt={weather.clouds}
           />
         </div>

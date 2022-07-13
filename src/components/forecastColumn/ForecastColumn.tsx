@@ -14,7 +14,7 @@ export const ForecastColumn: FC<IForecastColumnProps> = ({ forecast }) => {
       <div className={s.time}>{forecast.date && parseInt(forecast.date?.split(" ")[1])}:00</div>
       <div className={s.clouds}>
         <img
-          src={forecast.icon && `http://openweathermap.org/img/wn/${forecast.icon}@2x.png`}
+          src={forecast.icon && forecast.icon}
           alt={forecast.clouds}
         />
       </div>

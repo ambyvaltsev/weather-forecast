@@ -1,8 +1,9 @@
-import { RootState } from "../store";
+import { ILocation } from "../features/location/location-slice";
+
 
 export const loadState = () => {
   try {
-    const saveState = localStorage.getItem("state");
+    const saveState = localStorage.getItem("weather-forecast");
 
     if (saveState === null) {
       return undefined;
@@ -14,11 +15,11 @@ export const loadState = () => {
   }
 };
 
-export const saveState = (state: RootState) => {
+export const saveState = (state: ILocation) => {
   const stateToBeSaved = JSON.stringify(state);
-  localStorage.setItem("state", stateToBeSaved);
+  localStorage.setItem("weather-forecast", stateToBeSaved);
 };
 
 export const removeState = () => {
-  localStorage.removeItem("state");
+  localStorage.removeItem("weather-forecast");
 };

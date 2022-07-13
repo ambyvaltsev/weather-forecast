@@ -10,7 +10,7 @@ interface ILocationTooltipProps {
   setIsActive: (state: boolean) => void;
 }
 
-export const LocationTooltip: FC<ILocationTooltipProps> = ({ suggestions, setIsActive, location }) => {
+export const LocationTooltip: FC<ILocationTooltipProps> = ({ suggestions, setIsActive }) => {
   const dispatch = useAppDispatch();
   const { favoritesLocations } = useAppSelector((state) => state.location.entities);
   const selectLocation = (e: any) => {
