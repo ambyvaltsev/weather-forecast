@@ -1,9 +1,8 @@
 import { FC } from "react";
 import s from "./LocationTooltip.module.scss";
-import { useAppDispatch, useAppSelector } from "../../hooks/redux";
+import { useAppSelector } from "../../hooks/redux";
 import { NameLocationTooltip } from "../nameLocationTooltip/NameLocationTooltip";
-import { getSelectedLocation } from "../../features/location/location-slice";
-
+import {useActions} from '../../hooks/useActions'
 interface ILocationTooltipProps {
   location: string;
   suggestions: string[];
@@ -11,13 +10,13 @@ interface ILocationTooltipProps {
 }
 
 export const LocationTooltip: FC<ILocationTooltipProps> = ({ suggestions, setIsActive }) => {
-  const dispatch = useAppDispatch();
+  const {getSelectedLocation} = useActions()
   const { favoritesLocations } = useAppSelector((state) => state.location.entities);
   const selectLocation = (e: any) => {
     if (e.target.tagName === "svg" || e.target.tagName === "path") {
       return;
     }
-    dispatch(getSelectedLocation(e.target.textContent));
+    getSelectedLocation(e.target.textContent);
     setIsActive(false);
   };
 

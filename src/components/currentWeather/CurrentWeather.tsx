@@ -1,7 +1,8 @@
 import s from "./CurrentWeather.module.scss";
 import { FC } from "react";
-import { IWeather } from "../../features/weather/weather-slice";
+import { IWeather } from "../../features/weather/types";
 import { setBGColor } from "../../helpers/helpers";
+
 interface ICurrentWeatherProps {
   localLocation: string;
   weather: IWeather;

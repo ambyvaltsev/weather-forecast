@@ -1,6 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
-import { ReceivedWeather } from "../../types/types";
+import { IReceivedWeather, IWeather, IStateWeather } from "./types";
 const API_WEATHER_KEY = process.env.REACT_APP_API_WEATHER_KEY;
 
 const wind_direction = [
@@ -20,30 +20,13 @@ const wind_direction = [
   { dir: "WNW", min: 281.25, max: 303.75 },
   { dir: "NNW", min: 326.25, max: 348.75 },
 ];
-const getDirection = (data: ReceivedWeather) => {
+const getDirection = (data: IReceivedWeather) => {
   const direction = wind_direction.find((dir) => data.wind.deg > dir.min && data.wind.deg < dir.max);
   return typeof direction !== "undefined" ? direction.dir : "";
 };
 
-export interface IWeather {
-  date: string;
-  temp: number;
-  humidity: number;
-  pressure: number;
-  windSpeed: number;
-  windDir: string;
-  clouds: string;
-  rain: number;
-  snow: number;
-  icon: string;
 
-}
-interface IStateWeather {
-  day: string;
-  forecast: IWeather[];
-  weather: IWeather;
-}
-const formatWeather = (data: ReceivedWeather, direction: string, index: number = 0) => {
+const formatWeather = (data: IReceivedWeather, direction: string, index: number = 0) => {
   return {
     date: data.dt_txt || " ",
     temp: Math.round(data.main.temp),
@@ -84,7 +67,7 @@ export const getWeather = createAsyncThunk<{ weather: IWeather; forecasts: IWeat
     };
 
     const [dataWeather, dataForecast] = await Promise.all([axios(weatherConfig), axios(forecastConfig)]);
-    const forecasts = dataForecast.data.list.map((forecast: ReceivedWeather, index: number) => {
+    const forecasts = dataForecast.data.list.map((forecast: IReceivedWeather, index: number) => {
       const direction = getDirection(forecast);
       return formatWeather(forecast, direction, index);
     });

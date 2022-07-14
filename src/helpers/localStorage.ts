@@ -1,4 +1,4 @@
-import { ILocation } from "../features/location/location-slice";
+import { ILocation } from "../features/location/types";
 
 
 export const loadState = () => {

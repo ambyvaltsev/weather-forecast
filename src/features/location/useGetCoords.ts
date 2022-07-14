@@ -1,11 +1,8 @@
 import { useEffect, useState } from "react";
 import { useAppDispatch } from "../../hooks/redux";
 import { getGeolocation } from "./location-slice";
+import { ICoords } from "./types";
 
-export interface ICoords {
-  latitude: number | null;
-  longitude: number | null;
-}
 export const useGetCoords = () => {
   const dispatch = useAppDispatch();
   const [coords, setCoords] = useState<ICoords>({ latitude: 55.7522, longitude: 37.6156 });

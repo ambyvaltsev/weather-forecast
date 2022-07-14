@@ -1,16 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
-import { ISuggestion } from "../../types/types";
-import type { ICoords } from "./useGetCoords";
+import { ISuggestion, ILocation, ICoords } from "./types";
 const API_KEY_GEO = process.env.REACT_APP_API_GEO_KEY;
-
-export interface ILocation {
-  suggestions: string[];
-  selectedLocation: string;
-  localLocation: string;
-  coords: ICoords;
-  favoritesLocations: string[];
-}
 
 export const getGeolocation = createAsyncThunk<
   { localLocation: string; coords: ICoords },
@@ -76,7 +67,7 @@ export const locationSlice = createSlice({
         state.entities.favoritesLocations.push(action.payload);
       }
     },
-    removeFavoritesLocation(state, action: PayloadAction<string>) {
+    removeFavoriteLocation(state, action: PayloadAction<string>) {
       state.entities.favoritesLocations = state.entities.favoritesLocations.filter(
         (location) => location !== action.payload
       );
@@ -106,4 +97,4 @@ export const locationSlice = createSlice({
   },
 });
 
-export const { getSelectedLocation, addFavoriteLocation, removeFavoritesLocation } = locationSlice.actions;
+export const { getSelectedLocation, addFavoriteLocation, removeFavoriteLocation } = locationSlice.actions;

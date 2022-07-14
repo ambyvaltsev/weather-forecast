@@ -1,20 +1,20 @@
 import { FC } from "react";
-import { useAppSelector, useAppDispatch } from "../../hooks/redux";
+import { useAppSelector} from "../../hooks/redux";
 import s from "./Tab.module.scss";
 import { NavLink } from "react-router-dom";
-import { setDay } from "../../features/weather/weather-slice";
+import { useActions } from "../../hooks/useActions";
 interface ITabProps {
   date?: Date;
   day: string;
 }
 
 export const Tab: FC<ITabProps> = ({ date, day }) => {
-  const dispatch = useAppDispatch();
+  const { setDay } = useActions();
   const { weather } = useAppSelector((state) => state.weather.entities);
   const { temp } = weather;
 
   return (
-    <NavLink to={day} className={s.container} onClick={() => dispatch(setDay(day))}>
+    <NavLink to={day} className={s.container} onClick={() => setDay(day)}>
       <h6 className={s.date}>{day}</h6>
       <span className={s.time}>
         {date

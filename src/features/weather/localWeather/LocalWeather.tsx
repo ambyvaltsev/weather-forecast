@@ -1,22 +1,20 @@
 import { FC, useEffect } from "react";
-import { useAppSelector, useAppDispatch } from "../../../hooks/redux";
+import { useAppSelector } from "../../../hooks/redux";
 import { CurrentWeather } from "../../../components/currentWeather/CurrentWeather";
 import { Forecast } from "../../../components/forecast/Forecast";
-import { getWeather } from "../weather-slice";
 import s from "./LocalWeather.module.scss";
+import { useActions } from "../../../hooks/useActions";
 
 export const LocalWeather: FC = () => {
-  const dispatch = useAppDispatch();
+  const { getWeather } = useActions();
   const weather = useAppSelector((state) => state.weather.entities.weather);
   const { coords, localLocation } = useAppSelector((state) => state.location.entities);
 
-  useEffect(() => {}, []);
-
   useEffect(() => {
     if (coords.latitude && coords.longitude) {
-      dispatch(getWeather(localLocation));
+      getWeather(localLocation);
     }
-  }, [coords, dispatch]);
+  }, [coords]);
 
   return (
     <div className={s.container}>

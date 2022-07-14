@@ -1,12 +1,12 @@
 import { FC, useEffect } from "react";
-import { getWeather } from "../weather-slice";
-import { useAppSelector, useAppDispatch } from "../../../hooks/redux";
+import { useAppSelector } from "../../../hooks/redux";
 import s from "./SelectedWeather.module.scss";
 import { Tab } from "../../../components/tab/Tab";
 import { Outlet } from "react-router-dom";
+import { useActions } from "../../../hooks/useActions";
 
 export const SelectedWeather: FC = () => {
-  const dispatch = useAppDispatch();
+  const { getWeather } = useActions();
   const { selectedLocation } = useAppSelector((state) => state.location.entities);
 
   const today = new Date();
@@ -14,9 +14,9 @@ export const SelectedWeather: FC = () => {
 
   useEffect(() => {
     if (selectedLocation) {
-      dispatch(getWeather(selectedLocation));
+      getWeather(selectedLocation);
     }
-  }, [selectedLocation, dispatch]);
+  }, [selectedLocation]);
 
   return (
     <div className={s.container}>
