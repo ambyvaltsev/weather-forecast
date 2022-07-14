@@ -3,7 +3,7 @@ import s from "./NameLocationTooltip.module.scss";
 import { AiOutlineStar, AiFillStar } from "react-icons/ai";
 import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import { getFavoriteLocWeather } from "../../features/weather/weather-slice";
-import { setBGColor } from "../../helpers/helpers";
+import { setTempColor } from "../../utils/tempColor";
 import { useActions } from "../../hooks/useActions";
 interface INameTooltip {
   selectLocation: (e: any) => void;
@@ -36,7 +36,7 @@ export const NameLocationTooltip: FC<INameTooltip> = ({ selectLocation, name }) 
         <>
           <div
             className={s.temp}
-            style={{ backgroundColor: `${setBGColor(weather.temp)}` }}
+            style={{ backgroundColor: `${setTempColor(weather.temp)}` }}
           >{`${weather.temp}\u2103`}</div>
           <div className={s.clouds}>
             <img src={`${weather.icon}`} alt={weather.clouds} />

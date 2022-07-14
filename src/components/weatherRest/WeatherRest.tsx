@@ -2,7 +2,7 @@ import { FC } from "react";
 import { useAppSelector } from "../../hooks/redux";
 import s from "./WeatherRest.module.scss";
 import { ForecastColumn } from "../forecastColumn/ForecastColumn";
-import { formatter } from "../../helpers/helpers";
+import { formatter } from "../../utils/formatter";
 
 interface IWeatherFullDayProps {
   day: string;

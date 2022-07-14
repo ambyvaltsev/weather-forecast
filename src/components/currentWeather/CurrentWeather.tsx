@@ -1,7 +1,7 @@
 import s from "./CurrentWeather.module.scss";
 import { FC } from "react";
 import { IWeather } from "../../features/weather/types";
-import { setBGColor } from "../../helpers/helpers";
+import { setTempColor } from "../../utils/tempColor";
 
 interface ICurrentWeatherProps {
   localLocation: string;
@@ -23,7 +23,7 @@ export const CurrentWeather: FC<ICurrentWeatherProps> = ({ localLocation, weathe
       <div className={s.mainInfo}>
         <span
           className={s.temp}
-          style={{ backgroundColor: `${setBGColor(weather.temp)}` }}
+          style={{ backgroundColor: `${setTempColor(weather.temp)}` }}
         >{`${weather.temp}\u2103`}</span>
         <div className={s.clouds}>
           <img

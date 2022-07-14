@@ -1,7 +1,7 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { locationSlice } from "../features/location/location-slice";
 import { weatherSlice } from "../features/weather/weather-slice";
-import { saveState, loadState } from "../helpers/localStorage";
+import { saveState, loadState } from "../utils/localStorage";
 
 const preloadedState = loadState();
 

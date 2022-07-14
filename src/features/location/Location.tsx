@@ -43,7 +43,7 @@ export const Location: FC = () => {
 
   return (
     <div className={s.container} ref={tooltip}>
-      <form className={s.search__location} name="search__location">
+      <form className={s.search__location} name="search__location" onSubmit={(e) => e.preventDefault()}>
         <AiOutlineSearch className={s.location__icon} />
         <LocationInput location={location} setIsActive={setIsActive} setLocation={setLocation} />
         {isActive && suggestions && (favoritesLocations.length > 0 || location.length > 0) && (
