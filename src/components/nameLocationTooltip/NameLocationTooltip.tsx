@@ -26,6 +26,7 @@ export const NameLocationTooltip: FC<INameTooltip> = ({ selectLocation, name }) 
         .then((res) => setWeather({ temp: res.temp, icon: res.icon, clouds: res.clouds }));
     }
   }, [name]);
+
   return (
     <div className={s.container} onClick={selectLocation}>
       <span id="icon" className={s.icon} onClick={selectFavotiteLocation}>

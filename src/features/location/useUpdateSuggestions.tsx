@@ -1,19 +1,15 @@
-import { useAppDispatch } from "../../hooks/redux";
-import { checkingInput } from "./location-slice";
-import { debounce } from "../../utils/debounce";
 import { useEffect } from "react";
+import { useDebounce } from "../../hooks/useDebounce";
+import { useActions } from "../../hooks/useActions";
+
 
 export const useUpdateSuggestions = (location: string) => {
-  const dispatch = useAppDispatch();
-  let updateSuggestios = () => {
-    dispatch(checkingInput(location));
-  };
-
-  updateSuggestios = debounce(updateSuggestios, 300);
+  const {checkingInput} = useActions()
+  const debounced = useDebounce(location, 300)
 
   useEffect(() => {
-    if (location) {
-      updateSuggestios();
+    if (debounced) {
+      checkingInput(debounced)
     }
-  }, [location]);
+  }, [debounced]);
 };

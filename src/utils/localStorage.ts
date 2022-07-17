@@ -1,4 +1,4 @@
-import { ILocation } from "../features/location/types";
+
 
 
 export const loadState = () => {
@@ -15,7 +15,7 @@ export const loadState = () => {
   }
 };
 
-export const saveState = (state: ILocation) => {
+export const saveState = (state: string[]) => {
   const stateToBeSaved = JSON.stringify(state);
   localStorage.setItem("weather-forecast", stateToBeSaved);
 };

@@ -7,6 +7,7 @@ import { LocationInput } from "../../components/locationInput/LocationInput";
 import { LocationTooltip } from "../../components/locationTooltip/LocationTooltip";
 import { useNavigate } from "react-router-dom";
 import { useUpdateSuggestions } from "./useUpdateSuggestions";
+import { useLocalStorage } from "../../hooks/useLocalStorage";
 
 export const Location: FC = () => {
   const tooltip = useRef<HTMLDivElement>(null);
@@ -38,7 +39,7 @@ export const Location: FC = () => {
   }, []);
 
   useGetCoords();
-
+  useLocalStorage();
   useUpdateSuggestions(location);
 
   return (
