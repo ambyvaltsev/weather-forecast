@@ -1,17 +1,16 @@
 import s from "./CurrentWeather.module.scss";
 import { FC } from "react";
-import { IWeather } from "../../features/weather/types";
-import { setTempColor } from "../../utils/tempColor";
+import { setColorTemp } from "../../utils";
+import { useAppSelector } from "../../hooks/redux";
 
 interface ICurrentWeatherProps {
-  localLocation: string;
-  weather: IWeather;
+  selected?: boolean;
 }
 
-export const CurrentWeather: FC<ICurrentWeatherProps> = ({ localLocation, weather }) => {
+export const CurrentWeather: FC<ICurrentWeatherProps> = ({ selected }) => {
+  const { weather } = useAppSelector((state) => state.weather.entities);
   return (
-    <div className={s.container}>
-      <h1 className={s.location}>{localLocation}</h1>
+    <div className={selected ? `${s.container} ${s.selected}` : `${s.container}`}>
       <span className={s.date}>
         {new Date().toLocaleString("en-US", {
           year: "numeric",
@@ -23,28 +22,27 @@ export const CurrentWeather: FC<ICurrentWeatherProps> = ({ localLocation, weathe
       <div className={s.mainInfo}>
         <span
           className={s.temp}
-          style={{ backgroundColor: `${setTempColor(weather.temp)}` }}
+          style={{ backgroundColor: `${setColorTemp(weather.temp)}` }}
         >{`${weather.temp}\u2103`}</span>
         <div className={s.clouds}>
-          <img
-            src={weather.icon && weather.icon}
-            alt={weather.clouds}
-          />
+          <img src={weather.icon && weather.icon} alt={weather.clouds} />
         </div>
       </div>
-      <div className={s.subInfo}>
-        <span className={s.name}>Wind:</span>
-        <span className={s.value}>
-          {weather.windSpeed} m/s / {weather.windDir}
-        </span>
-      </div>
-      <div className={s.subInfo}>
-        <span className={s.name}>Pressure:</span>
-        <span className={s.value}>{weather.pressure} mm Hg</span>
-      </div>
-      <div className={s.subInfo}>
-        <span className={s.name}>Humidity:</span>
-        <span className={s.value}>{weather.humidity}%</span>
+      <div className={selected ? `${s.subInfo} ${s.selected}` : `${s.subInfo}`}>
+        <div className={selected ? `${s.subInfo__item} ${s.selected}` : `${s.subInfo__item}`}>
+          <span className={selected ? `${s.item__name} ${s.selected}` : `${s.item__name}`}>Wind:</span>
+          <span className={s.item__value}>
+            {weather.windSpeed} m/s {weather.windDir}
+          </span>
+        </div>
+        <div className={selected ? `${s.subInfo__item} ${s.selected}` : `${s.subInfo__item}`}>
+          <span className={selected ? `${s.item__name} ${s.selected}` : `${s.item__name}`}>Pressure:</span>
+          <span className={s.item__value}>{weather.pressure} mm Hg</span>
+        </div>
+        <div className={selected ? `${s.subInfo__item} ${s.selected}` : `${s.subInfo__item}`}>
+          <span className={selected ? `${s.item__name} ${s.selected}` : `${s.item__name}`}>Humidity:</span>
+          <span className={s.item__value}>{weather.humidity}%</span>
+        </div>
       </div>
     </div>
   );

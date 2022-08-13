@@ -1,8 +1,8 @@
 import { FC } from "react";
-import { useAppSelector} from "../../hooks/redux";
+import { useAppSelector, useActions } from "../../hooks";
 import s from "./Tab.module.scss";
 import { NavLink } from "react-router-dom";
-import { useActions } from "../../hooks/useActions";
+
 interface ITabProps {
   date?: Date;
   day: string;

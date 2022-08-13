@@ -1,0 +1,13 @@
+@import "styles/nullstyle.scss";
+
+.App {
+  max-width: 768px;
+  margin: 0 auto;
+}
+
+.active {
+  background-color: rgba(0, 0, 0, 0.7);
+  & * {
+    color: white;
+  }
+}

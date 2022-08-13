@@ -1,9 +1,8 @@
-
-
+import { RootState } from "../store";
 
 export const loadState = () => {
   try {
-    const saveState = localStorage.getItem("weather-forecast");
+    const saveState = localStorage.getItem('weather-forecast');
 
     if (saveState === null) {
       return undefined;
@@ -15,9 +14,9 @@ export const loadState = () => {
   }
 };
 
-export const saveState = (state: string[]) => {
+export const saveState = (state: RootState) => {
   const stateToBeSaved = JSON.stringify(state);
-  localStorage.setItem("weather-forecast", stateToBeSaved);
+  localStorage.setItem('weather-forecast', stateToBeSaved);
 };
 
 export const removeState = () => {

@@ -1,0 +1,22 @@
+.container {
+  display: flex;
+  gap: 10px;
+  min-height: 160px;
+  .weather__now {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 40%;
+    @media (max-width: 575.98px) {
+      width: 100%;
+    }
+    .location {
+      font-size: 20px;
+    }
+  }
+  @media (max-width: 575.98px) {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+}

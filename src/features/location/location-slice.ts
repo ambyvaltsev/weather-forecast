@@ -1,8 +1,7 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios from "axios";
 import { ISuggestion, ILocation, ICoords } from "./types";
-import { loadState } from "../../utils/localStorage";
-const API_KEY_GEO = process.env.REACT_APP_API_GEO_KEY;
+import { API_KEY_GEO } from "../../utils";
 
 export const getGeolocation = createAsyncThunk<
   { localLocation: string; coords: ICoords },
@@ -45,9 +44,9 @@ export const checkingInput = createAsyncThunk<string[], string>("@@location/chec
   return suggestions;
 });
 const initialState: ILocation = {
-  favoritesLocations: loadState() || [],
+  favoritesLocations: [],
   suggestions: [],
-  selectedLocation: "",
+  selectedLocation: "Москва",
   localLocation: "",
   coords: { latitude: null, longitude: null },
 };

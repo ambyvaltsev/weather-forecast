@@ -1,6 +1,6 @@
 import s from "./ForecastColumn.module.scss";
 import { FC } from "react";
-import { setTempColor } from "../../utils/tempColor";
+import { setColorTemp } from "../../utils";
 import { IWeather } from "../../features/weather/types";
 
 interface IForecastColumnProps {
@@ -18,7 +18,7 @@ export const ForecastColumn: FC<IForecastColumnProps> = ({ forecast }) => {
           alt={forecast.clouds}
         />
       </div>
-      <div className={s.temp} style={{ backgroundColor: `${setTempColor(forecast.temp)}` }}>
+      <div className={s.temp} style={{ backgroundColor: `${setColorTemp (forecast.temp)}` }}>
         {`${forecast?.temp} \u2103`}
       </div>
       <div className={s.wind}>{forecast?.windSpeed}</div>

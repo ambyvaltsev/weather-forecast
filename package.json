@@ -15,6 +15,7 @@
     "@types/react-redux": "^7.1.24",
     "@types/react-router-dom": "^5.3.3",
     "axios": "^0.27.2",
+    "compose-function": "^3.0.3",
     "overlayscrollbars": "^1.13.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -53,6 +54,8 @@
     ]
   },
   "devDependencies": {
+    "@types/compose-function": "^0.0.30",
+    "@types/redux": "^3.6.0",
     "gh-pages": "^4.0.0"
   }
 }

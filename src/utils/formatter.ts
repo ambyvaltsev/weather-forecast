@@ -1,7 +1,3 @@
-
-
-
-
 export const formatter = (day: string): string => {
   const today = new Date()
     .toLocaleString("en-GB", {

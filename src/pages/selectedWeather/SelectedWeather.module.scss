@@ -1,0 +1,19 @@
+.container {
+  .title {
+    margin-left: 10px;
+    font-size: 16px;
+    margin-bottom: 15px;
+  }
+  .weather {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    .weather__tabs {
+      display: flex;
+      justify-content: space-around;
+    }
+  }
+}
+.active {
+  color: aqua;
+}

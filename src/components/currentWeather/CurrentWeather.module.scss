@@ -1,10 +1,14 @@
 .container {
   display: flex;
   flex-direction: column;
-  gap: 15px;
-  width: 40%;
-  padding-right: 10px;
-  border-right: 1px solid black;
+  gap: 20px;
+  margin-bottom: 20px;
+  &.selected {
+    align-items: center;
+    @media (max-width: 575.98px) {
+      border-bottom: none;
+    }
+  }
   @media (max-width: 575.98px) {
     border-bottom: 1px solid black;
     border-right: none;
@@ -22,6 +26,9 @@
     display: flex;
     gap: 10px;
     align-items: center;
+    &.selected {
+      display: flex;
+    }
     .temp {
       font-size: 25px;
       padding: 5px;
@@ -38,14 +45,39 @@
   }
   .subInfo {
     display: flex;
-    justify-content: flex-start;
-    font-size: 17px;
-    .name {
-      width: 80px;
+    flex-direction: column;
+    gap: 5px;
+    &.selected {
+      flex-direction: row;
+      gap: 20px;
     }
-    @media (max-width: 575.98px) {
-      gap: 40px;
+    .subInfo__item {
+      display: flex;
       justify-content: flex-start;
+      font-size: 17px;
+      &.selected {
+        @media (max-width: 575.98px) {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          gap: 10px;
+        }
+      }
+      .item__name {
+        display: block;
+        width: 80px;
+        &.selected {
+          width: auto;
+          margin-right: 5px;
+        }
+      }
+      .item__value {
+        display: block;
+      }
+      @media (max-width: 575.98px) {
+        gap: 40px;
+        justify-content: flex-start;
+      }
     }
   }
 }
